@@ -7,9 +7,6 @@
 # find ${GITHUB_WORKSPACE}/uola-luci/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
 # find ${GITHUB_WORKSPACE}/uola-luci/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
 
-# 删除turboacc应用
-# rm -rf ${GITHUB_WORKSPACE}/uola-luci/luci-app-turboacc
-
 # LICENSE和README
-# cat ${GITHUB_WORKSPACE}/luci/${matrix_target}/server/LICENSE > LICENSE
-# cat ${GITHUB_WORKSPACE}/luci/${matrix_target}/server/README.md > README.md
+cat ${GITHUB_WORKSPACE}/luci/${matrix_target}/server/LICENSE > LICENSE
+cat ${GITHUB_WORKSPACE}/luci/${matrix_target}/server/README.md > README.md
