@@ -73,15 +73,7 @@ jobs:
       run: |
         sudo -E apt-get -y install git git-core subversion curl wget
         sudo -E timedatectl set-timezone "$TZ"     
-    
-    # 克隆源码
-    - name: 克隆源码
-      run: |
-        mkdir -p uola-custom
-        cd uola-custom
-        find ${GITHUB_WORKSPACE}/uola-custom/ -type d -regextype pcustomix-extended -regex '.*.(git|svn)' | xargs -exec rm -rf
-        # find ${GITHUB_WORKSPACE}/uola-custom/ -type f -regextype pcustomix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
-        
+            
     # 加载自定义脚本  
     - name: 加载自定义脚本
       run: |
