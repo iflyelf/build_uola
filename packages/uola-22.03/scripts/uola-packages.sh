@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# 删除smartdns
-# rm -rf net/smartdns
 
 # web超时时间
 sed -i '$a cgi-timeout = 300' net/uwsgi/files-luci-support/luci-webui.ini
@@ -13,7 +11,7 @@ sed -i '$a cgi-timeout = 300' net/uwsgi/files-luci-support/luci-webui.ini
 rm -rf net/smartdns
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns.git net/smartdns
 find ${GITHUB_WORKSPACE}/uola-packages/net/ -type d -regextype posix-extended -regex '.*.(git|svn)' | xargs -exec rm -rf
-mkdir -p smartdns/conf
+mkdir -p net/smartdns/conf/
 cat ${GITHUB_WORKSPACE}/packages/${matrix_target}/server/smartdns/conf/smartdns.conf > net/smartdns/conf/smartdns.conf
 cat ${GITHUB_WORKSPACE}/packages/${matrix_target}/server/smartdns/conf/custom.conf > net/smartdns/conf/custom.conf
 wget https://raw.githubusercontent.com/danxiaonuo/gwf/main/smartdns/smartdns_xiaonuo_domain.conf -O net/smartdns/conf/smartdns_xiaonuo_domain.conf
