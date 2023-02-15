@@ -36,7 +36,7 @@ jobs:
     # needs: [packages]
     # 选择虚拟环境
     runs-on: ubuntu-latest
-    if: github.event.repcustomitory.owner.id == github.event.sender.id || ! github.event.sender.id
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
     
     # 编译版本选择
     name: 编译 ${{matrix.target}} custom
