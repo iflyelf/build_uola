@@ -477,6 +477,8 @@ jobs:
     - name: 加载自定义脚本
       run: |
         mkdir -pv uola-os && cd uola-os
+        chmod +x ${GITHUB_WORKSPACE}/os/common/scripts/uola-extra.sh
+        /bin/bash ${GITHUB_WORKSPACE}/os/common/scripts/uola-extra.sh
         chmod +x ${GITHUB_WORKSPACE}/os/${{matrix.target}}/$DIY_SH
         /bin/bash ${GITHUB_WORKSPACE}/os/${{matrix.target}}/$DIY_SH
       

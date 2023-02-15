@@ -1,0 +1,5 @@
+src-git custom https://github.com/iflyelf/uola-custom.git
+src-git packages https://github.com/iflyelf/uola-packages.git
+src-git luci https://github.com/iflyelf/uola-luci.git
+src-git routing https://github.com/iflyelf/uola-routing.git
+src-git telephony https://github.com/iflyelf/uola-telephony.git
