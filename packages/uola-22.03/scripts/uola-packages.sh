@@ -10,7 +10,6 @@ sed -i '$a cgi-timeout = 300' net/uwsgi/files-luci-support/luci-webui.ini
 # 增加 smartdns
 rm -rf net/smartdns
 git clone --depth=1 https://github.com/pymumu/openwrt-smartdns.git net/smartdns
-find ${GITHUB_WORKSPACE}/uola-packages/net/ -type d -regextype posix-extended -regex '.*.(git|svn)' | xargs -exec rm -rf
 mkdir -p net/smartdns/conf/
 cat ${GITHUB_WORKSPACE}/packages/${matrix_target}/server/smartdns/conf/smartdns.conf > net/smartdns/conf/smartdns.conf
 cat ${GITHUB_WORKSPACE}/packages/${matrix_target}/server/smartdns/conf/custom.conf > net/smartdns/conf/custom.conf
