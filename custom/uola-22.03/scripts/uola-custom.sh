@@ -153,7 +153,7 @@ cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clas
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/yum_change.sh > luci-app-clash/root/usr/share/clash/yum_change.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/chinaipset.sh > luci-app-clash/root/usr/share/clash/chinaipset.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/restore.sh > luci-app-clash/root/usr/share/clash/restore.sh
-
+find ${GITHUB_WORKSPACE}/uola-custom/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
 # find ${GITHUB_WORKSPACE}/uola-custom/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
 # find ${GITHUB_WORKSPACE}/uola-custom/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
 
