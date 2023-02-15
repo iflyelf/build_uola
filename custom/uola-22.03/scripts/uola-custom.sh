@@ -76,10 +76,10 @@ svn co https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/luci-app-eqos
 git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 
 # k3
-https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/k3
+svn co https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/k3
 
 # luci-app-netdata
-https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/luci-app-netdata
+svn co https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/luci-app-netdata
 
 # luci-app-ttnode
 git clone --depth=1 https://github.com/jerrykuku/luci-app-ttnode
