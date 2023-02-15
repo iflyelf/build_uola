@@ -139,6 +139,7 @@ git clone --depth=1 https://github.com/frainzy1477/luci-app-clash.git
 rm -rf luci-app-clash/root/usr/share/clash/yacd
 wget -c  https://github.com/haishanh/yacd/releases/latest/download/yacd.tar.xz -O yacd.tar.xz
 cp -rfp public luci-app-clash/root/usr/share/clash/yacd
+rm -rf yacd.tar.xz
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/luasrc/view/clash/status.htm > luci-app-clash/luasrc/view/clash/status.htm
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/init.d/clash > luci-app-clash/root/etc/init.d/clash
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/config/clash > luci-app-clash/root/etc/config/clash
