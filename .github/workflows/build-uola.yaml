@@ -150,8 +150,8 @@ jobs:
       run: |
         git clone --depth=1 -b $REPO_BRANCH $REPO_URL uola-luci
         cd uola-luci
-        find ${GITHUB_WORKSPACE}/uola-luci/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-        
+        find ${GITHUB_WORKSPACE}/uola-luci/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf
+             
     # 加载自定义脚本  
     - name: 加载自定义脚本
       run: |
@@ -227,8 +227,7 @@ jobs:
       run: |
         git clone --depth=1 -b $REPO_BRANCH $REPO_URL uola-packages
         cd uola-packages
-        find ${GITHUB_WORKSPACE}/uola-packages/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-        # find ${GITHUB_WORKSPACE}/uola-packages/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+        find ${GITHUB_WORKSPACE}/uola-packages/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf
         
     # 加载自定义脚本  
     - name: 加载自定义脚本
@@ -306,8 +305,7 @@ jobs:
       run: |
         git clone --depth=1 -b $REPO_BRANCH $REPO_URL uola-routing
         cd uola-routing
-        find ${GITHUB_WORKSPACE}/uola-routing/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-        # find ${GITHUB_WORKSPACE}/uola-routing/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+        find ${GITHUB_WORKSPACE}/uola-routing/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf
         
     # 加载自定义脚本  
     - name: 加载自定义脚本
@@ -384,8 +382,7 @@ jobs:
       run: |
         git clone --depth=1 -b $REPO_BRANCH $REPO_URL uola-telephony
         cd uola-telephony
-        find ${GITHUB_WORKSPACE}/uola-telephony/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-        # find ${GITHUB_WORKSPACE}/uola-telephony/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+        find ${GITHUB_WORKSPACE}/uola-telephony/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf
         
     # 加载自定义脚本  
     - name: 加载自定义脚本
@@ -462,8 +459,7 @@ jobs:
       run: |
         git clone --depth=1 -b $REPO_BRANCH $REPO_URL uola-os
         cd uola-os
-        find ${GITHUB_WORKSPACE}/uola-os/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-        # find ${GITHUB_WORKSPACE}/uola-os/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+        find ${GITHUB_WORKSPACE}/uola-os/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf
         
     # 加载自定义脚本  
     - name: 加载自定义脚本

@@ -7,10 +7,8 @@
 # 增加 smartdns
 rm -rf applications/luci-app-smartdns
 git clone --depth=1 -b master https://github.com/pymumu/luci-app-smartdns.git applications/luci-app-smartdns
-find ${GITHUB_WORKSPACE}/uola-luci/applications/ -type d -regextype posix-extended -regex '.*.(git|svn)' | xargs -exec rm -rf
 
-# find ${GITHUB_WORKSPACE}/uola-luci/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-# find ${GITHUB_WORKSPACE}/uola-luci/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+find ${GITHUB_WORKSPACE}/uola-luci/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
 # LICENSE和README
 cat ${GITHUB_WORKSPACE}/luci/${matrix_target}/server/LICENSE > LICENSE

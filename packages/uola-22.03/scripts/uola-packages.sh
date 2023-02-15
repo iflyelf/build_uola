@@ -25,8 +25,7 @@ sed -i '/conffiles/a\/etc/smartdns/smartdns_xiaonuo_domain.conf' net/smartdns/Ma
 sed -i '/blacklist-ip.conf/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_gfw_domain.conf $(1)/etc/smartdns/smartdns_gfw_domain.conf' net/smartdns/Makefile
 sed -i '/smartdns_gfw_domain.conf/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_xiaonuo_domain.conf $(1)/etc/smartdns/smartdns_xiaonuo_domain.conf' net/smartdns/Makefile
 
-# find ${GITHUB_WORKSPACE}/uola-packages/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-# find ${GITHUB_WORKSPACE}/uola-packages/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+find ${GITHUB_WORKSPACE}/uola-packages/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
 # LICENSE和README
 cat ${GITHUB_WORKSPACE}/packages/${matrix_target}/server/LICENSE > LICENSE

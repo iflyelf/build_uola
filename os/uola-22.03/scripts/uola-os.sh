@@ -20,8 +20,7 @@ git clone https://github.com/zsh-users/zsh-completions package/base-files/files/
 rm -rf package/base-files/files/root/.oh-my-zsh/plugins/zsh-completions/.git
 cat ${GITHUB_WORKSPACE}/os/common/server/package/zsh/.zshrc > package/base-files/files/root/.zshrc
 
-# find ${GITHUB_WORKSPACE}/uola-os/ -type d -regextype posix-extended -regex '.*.(git|github|svn)' | xargs -exec rm -rf
-# find ${GITHUB_WORKSPACE}/uola-os/ -type f -regextype posix-extended -regex '.*.(LICENSE|README|MAINTAINERS)' | xargs -exec rm -rf
+find ${GITHUB_WORKSPACE}/uola-os/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
 # LICENSE和README
 cat ${GITHUB_WORKSPACE}/os/${matrix_target}/server/LICENSE > LICENSE
