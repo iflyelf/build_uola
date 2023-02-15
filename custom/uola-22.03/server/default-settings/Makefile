@@ -15,9 +15,9 @@ define Package/default-settings
   CATEGORY:=LuCI
   TITLE:=LuCI support for Default Settings
   PKGARCH:=all
-  DEPENDS:=+luci +luci-base +luci-i18n-base-zh-cn +luci-compat +luci-i18n-compat-zh-cn +luci-lib-base +luci-lib-ip +luci-lib-jsonc +luci-lib-nixio +luci-ssl-nginx +luci-i18n-nginx-zh-cn +luci-theme-argon +luci-app-argon-config +luci-i18n-opkg-zh-cn +LUCI_JSMIN +@LUCI_LANG_zh_Hans +@LUCI_LANG_zh-cn \
+  DEPENDS:=+luci +luci-base +luci-i18n-base-zh-cn +luci-compat +luci-lib-base +luci-lib-ip +luci-lib-jsonc +luci-lib-nixio +luci-ssl-nginx +luci-theme-argon +luci-app-argon-config +luci-i18n-opkg-zh-cn +@LUCI_LANG_zh_Hans +@LUCI_LANG_zh-cn \
     +autocore +automount +autosamba +kmod-tun +kmod-sdhci +kmod-mmc +kmod-mmc-spi +kmod-scsi-core \
-	+luci-proto-3g +luci-proto-bonding +luci-proto-ipv6 +luci-proto-ncm +luci-proto-openconnect +luci-proto-ppp +luci-proto-relay +luci-proto-vxlan +luci-proto-wireguard \
+    +luci-proto-3g +luci-proto-bonding +luci-proto-ipv6 +luci-proto-ncm +luci-proto-openconnect +luci-proto-ppp +luci-proto-relay +luci-proto-vxlan +luci-proto-wireguard \
     +luci-app-cpufreq +luci-i18n-cpufreq-zh-cn +luci-app-cpulimit +luci-i18n-cpulimit-zh-cn +luci-app-ramfree +luci-i18n-ramfree-zh-cn +luci-app-smartdns +luci-i18n-smartdns-zh-cn +luci-app-firewall +luci-i18n-firewall-zh-cn +luci-app-ttyd +luci-i18n-ttyd-zh-cn +luci-app-diskman +luci-i18n-diskman-zh-cn +luci-app-ksmbd +luci-i18n-ksmbd-zh-cn +luci-app-samba4 +luci-i18n-samba4-zh-cn +luci-app-wol +luci-i18n-wol-zh-cn +luci-app-upnp +luci-i18n-upnp-zh-cn +luci-app-store +luci-i18n-store-zh-cn +luci-app-clash +luci-i18n-clash-zh-cn \
     +bash +git +zsh +curl +wget +htop +screen +vim-fuller +ttyd +tcping +ipv6helper +6in4 +zip +unzip +gzip +tar +sed +lrzsz +lscpu +lsof +fdisk +blkid +usbutils +coreutils-nohup +bind-dig +jq +bc +openssl-util +openssh-sftp-server +openssh-sftp-client  +libustream-openssl +tinc
      
