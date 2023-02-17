@@ -4,7 +4,8 @@
 cat ${GITHUB_WORKSPACE}/os/${matrix_target}/server/feeds.conf.default > feeds.conf.default
 
 # 修改LuCI 配置
-sed -i '/turboacc/d' include/target.mk
+sed -i '/odhcp6c/d' include/target.mk
+sed -i '/odhcpd-ipv6only/d' include/target.mk
 sed -i 's#dnsmasq#dnsmasq-full#g' include/target.mk
 sed -i '/base-files/i\\        default-settings \\' include/target.mk
 
