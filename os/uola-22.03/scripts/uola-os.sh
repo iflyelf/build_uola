@@ -36,6 +36,8 @@ sed -i  '/luci-proto-wireguard/a\\        luci-app-quickstart \\' include/target
 sed -i  '/luci-app-quickstart/a\\        luci-i18n-quickstart-zh-cn \\' include/target.mk
 sed -i  '/luci-i18n-quickstart-zh-cn/a\\        luci-app-cpulimit \\' include/target.mk
 sed -i  '/luci-app-cpulimit/a\\        luci-app-ramfree \\' include/target.mk
+sed -i  '/luci-app-ramfree/a\\        luci-app-wol \\' include/target.mk
+sed -i  '/luci-app-wol/a\\        luci-i18n-wol-zh-cn \\' include/target.mk
 sed -i  '/dnsmasq-full/a\\        smartdns \\' include/target.mk
 sed -i  '/smartdns/a\\        luci-app-smartdns \\' include/target.mk
 sed -i  '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
