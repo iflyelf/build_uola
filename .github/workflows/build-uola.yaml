@@ -30,78 +30,7 @@ on:
      
 # 任务集
 jobs:
-
-  custom:
-    # 依赖环境
-    # needs: [packages]
-    # 选择虚拟环境
-    runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
-    
-    # 编译版本选择
-    name: 编译 ${{matrix.target}} custom
-    strategy:
-      fail-fast: false
-      matrix:
-        target: [uola-22.03]
-    
-    # 运行步骤
-    steps:
-    
-    # 检出各个代码模块
-    - name: 检出各个代码模块
-      uses: actions/checkout@v3
-    
-    # 加载配置文件    
-    - name: 加载 Settings.ini
-      run: | 
-        source "${GITHUB_WORKSPACE}/custom/${{matrix.target}}/ini/custom.ini"
-        echo "matrix_target=${{matrix.target}}" >> $GITHUB_ENV
-        echo "REPO_URL=${REPO_URL}" >> $GITHUB_ENV
-        echo "REPO_BRANCH=${REPO_BRANCH}" >> $GITHUB_ENV
-        echo "TZ=${TZ}" >> $GITHUB_ENV
-        echo "GITHUB_USER_NAME=${GITHUB_USER_NAME}" >> $GITHUB_ENV
-        echo "GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}" >> $GITHUB_ENV
-        echo "GITHUB_RROJECT=${GITHUB_RROJECT}" >> $GITHUB_ENV
-        echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
-        echo "DIY_SH=${DIY_SH}" >> $GITHUB_ENV
-      
-    # 初始化系统环境
-    - name: 初始化系统环境
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo -E apt-get -y install git git-core subversion curl wget
-        sudo -E timedatectl set-timezone "$TZ"     
-            
-    # 加载自定义脚本  
-    - name: 加载自定义脚本
-      run: |
-        mkdir -pv uola-custom && cd uola-custom
-        chmod +x ${GITHUB_WORKSPACE}/custom/${{matrix.target}}/$DIY_SH
-        /bin/bash ${GITHUB_WORKSPACE}/custom/${{matrix.target}}/$DIY_SH
-      
-    # 上传源码
-    - name: 上传源码
-      env:
-          GITHUB_TOKEN: ${{ secrets.UOLA_TOKEN }}
-      working-directory: ./uola-custom
-      run: |
-          git init
-          git config user.name $GITHUB_USER_NAME
-          git config user.email $GITHUB_USER_EMAIL
-          git add .
-          git commit -m "update uola-custom"
-          git push --force --quiet https://${{ env.GITHUB_TOKEN }}@$GITHUB_RROJECT HEAD:$BRANCH
-    
-    # 删除旧的GitHub-workflow    
-    - name: 删除旧的GitHub-workflow
-      uses: Mattraks/delete-workflow-runs@main
-      with:
-        retain_days: 1
-        keep_minimum_runs: 1    #保留多少个workflow不删除
         
-
   luci:
     # 依赖环境
     # needs: [packages]
@@ -256,7 +185,77 @@ jobs:
         retain_days: 1
         keep_minimum_runs: 1    #保留多少个workflow不删除    
         
-   
+
+  custom:
+    # 依赖环境
+    needs: [packages,luci]
+    # 选择虚拟环境
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+    
+    # 编译版本选择
+    name: 编译 ${{matrix.target}} custom
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [uola-22.03]
+    
+    # 运行步骤
+    steps:
+    
+    # 检出各个代码模块
+    - name: 检出各个代码模块
+      uses: actions/checkout@v3
+    
+    # 加载配置文件    
+    - name: 加载 Settings.ini
+      run: | 
+        source "${GITHUB_WORKSPACE}/custom/${{matrix.target}}/ini/custom.ini"
+        echo "matrix_target=${{matrix.target}}" >> $GITHUB_ENV
+        echo "REPO_URL=${REPO_URL}" >> $GITHUB_ENV
+        echo "REPO_BRANCH=${REPO_BRANCH}" >> $GITHUB_ENV
+        echo "TZ=${TZ}" >> $GITHUB_ENV
+        echo "GITHUB_USER_NAME=${GITHUB_USER_NAME}" >> $GITHUB_ENV
+        echo "GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}" >> $GITHUB_ENV
+        echo "GITHUB_RROJECT=${GITHUB_RROJECT}" >> $GITHUB_ENV
+        echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
+        echo "DIY_SH=${DIY_SH}" >> $GITHUB_ENV
+      
+    # 初始化系统环境
+    - name: 初始化系统环境
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E apt-get -y install git git-core subversion curl wget
+        sudo -E timedatectl set-timezone "$TZ"     
+            
+    # 加载自定义脚本  
+    - name: 加载自定义脚本
+      run: |
+        mkdir -pv uola-custom && cd uola-custom
+        chmod +x ${GITHUB_WORKSPACE}/custom/${{matrix.target}}/$DIY_SH
+        /bin/bash ${GITHUB_WORKSPACE}/custom/${{matrix.target}}/$DIY_SH
+      
+    # 上传源码
+    - name: 上传源码
+      env:
+          GITHUB_TOKEN: ${{ secrets.UOLA_TOKEN }}
+      working-directory: ./uola-custom
+      run: |
+          git init
+          git config user.name $GITHUB_USER_NAME
+          git config user.email $GITHUB_USER_EMAIL
+          git add .
+          git commit -m "update uola-custom"
+          git push --force --quiet https://${{ env.GITHUB_TOKEN }}@$GITHUB_RROJECT HEAD:$BRANCH
+    
+    # 删除旧的GitHub-workflow    
+    - name: 删除旧的GitHub-workflow
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1    #保留多少个workflow不删除
+        
   routing:
     # 依赖环境
     # needs: [packages]
@@ -413,7 +412,7 @@ jobs:
 
   os:
     # 依赖环境
-    # needs: [packages]
+    needs: [custom]
     # 选择虚拟环境
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
