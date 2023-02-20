@@ -4,7 +4,8 @@
 cat ${GITHUB_WORKSPACE}/os/${matrix_target}/server/feeds.conf.default > feeds.conf.default
 
 # 增加os源
-git clone --depth=1 https://github.com/iflyelf/uola-custom.git package/xiaonuo
+mkdir -p package/xiaonuo
+\cp -rfp ${GITHUB_WORKSPACE}/os/${matrix_target}/server/default-settings package/xiaonuo/default-settings
 
 # 修改LuCI 配置
 sed -i '/odhcp6c/d' include/target.mk

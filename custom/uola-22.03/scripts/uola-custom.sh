@@ -2,7 +2,7 @@
 
 # 增加 default-settings
 rm -rf default-settings
-\cp -rfp ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/default-settings default-settings
+# \cp -rfp ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/default-settings default-settings
 
 # 增加 smartdns
 svn co https://github.com/iflyelf/uola-packages/trunk/net/smartdns
