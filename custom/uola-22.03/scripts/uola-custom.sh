@@ -4,10 +4,6 @@
 rm -rf default-settings
 # \cp -rfp ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/default-settings default-settings
 
-# 增加 smartdns
-svn co https://github.com/iflyelf/uola-packages/trunk/net/smartdns
-svn co https://github.com/iflyelf/uola-luci/trunk/applications/luci-app-smartdns
-
 # 增加应用商店
 svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
 svn co https://github.com/linkease/istore/trunk/luci/luci-lib-taskd
