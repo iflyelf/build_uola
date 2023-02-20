@@ -17,10 +17,10 @@ wget https://raw.githubusercontent.com/danxiaonuo/gwf/main/smartdns/smartdns_xia
 wget https://raw.githubusercontent.com/danxiaonuo/gwf/main/smartdns/smartdns_gfw_domain.conf -O net/smartdns/conf/smartdns_gfw_domain.conf
 sed -i -e "s@\$(PKG_BUILD_DIR)/package/openwrt/custom.conf@\$(CURDIR)/conf/custom.conf@g" net/smartdns/Makefile
 sed -i -e "s@\$(PKG_BUILD_DIR)/package/openwrt/files/etc/config/smartdns@\$(CURDIR)/conf/smartdns.conf@g" net/smartdns/Makefile
+sed -i '/conf.d/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_gfw_domain.conf $(1)/etc/smartdns/smartdns_gfw_domain.conf' net/smartdns/Makefile
+sed -i '/smartdns_gfw_domain/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_xiaonuo_domain.conf $(1)/etc/smartdns/smartdns_xiaonuo_domain.conf' net/smartdns/Makefile
 sed -i '/conffiles/a\/etc/smartdns/smartdns_gfw_domain.conf' net/smartdns/Makefile
 sed -i '/conffiles/a\/etc/smartdns/smartdns_xiaonuo_domain.conf' net/smartdns/Makefile
-sed -i '/blacklist-ip.conf/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_gfw_domain.conf $(1)/etc/smartdns/smartdns_gfw_domain.conf' net/smartdns/Makefile
-sed -i '/smartdns_gfw_domain.conf/a\\t$(INSTALL_CONF) $(CURDIR)/conf/smartdns_xiaonuo_domain.conf $(1)/etc/smartdns/smartdns_xiaonuo_domain.conf' net/smartdns/Makefile
 
 find ${GITHUB_WORKSPACE}/uola-packages/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
