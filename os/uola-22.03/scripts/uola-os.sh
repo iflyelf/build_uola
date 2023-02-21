@@ -81,15 +81,19 @@ sed -i '/luci-app-wol/a\\        luci-i18n-wol-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-wol-zh-cn/a\\        luci-app-upnp \\' include/target.mk
 sed -i '/luci-app-upnp/a\\        luci-i18n-upnp-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-upnp-zh-cn/a\\        luci-app-store \\' include/target.mk
-sed -i '/luci-app-store/a\\        bash \\' include/target.mk
+sed -i '/luci-app-store/a\\        luci-app-clash \\' include/target.mk
+sed -i '/luci-app-clash/a\\        bash \\' include/target.mk
 sed -i '/bash/a\\        git \\' include/target.mk
 sed -i '/git/a\\        zsh \\' include/target.mk
 sed -i '/zsh/a\\        curl \\' include/target.mk
 sed -i '/curl/a\\        wget \\' include/target.mk
 sed -i '/wget/a\\        vim-fuller \\' include/target.mk
-sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
-sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
-sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
+sed -i '/vim-fuller/a\\        ipv6helper \\' include/target.mk
+sed -i '/ipv6helper/a\\        lrzsz \\' include/target.mk
+sed -i '/lrzsz/a\\        openssl-util \\' include/target.mk
+sed -i '/openssl-util/a\\        openssh-sftp-server \\' include/target.mk
+sed -i '/openssh-sftp-server/a\\        openssh-sftp-client \\' include/target.mk
+sed -i '/openssh-sftp-client/a\\        libustream-openssl \\' include/target.mk
 
 
 # 增加zsh
