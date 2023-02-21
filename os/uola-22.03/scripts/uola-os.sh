@@ -95,7 +95,9 @@ sed -i '/jq/a\\        openssl-util \\' include/target.mk
 sed -i '/openssl-util/a\\        openssh-sftp-server \\' include/target.mk
 sed -i '/openssh-sftp-server/a\\        openssh-sftp-client \\' include/target.mk
 sed -i '/openssh-sftp-client/a\\        libustream-openssl \\' include/target.mk
-
+sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
+sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
+sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
 
 # 增加zsh
 mkdir -p package/base-files/files/root
