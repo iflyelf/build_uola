@@ -90,10 +90,6 @@ sed -i '/wget/a\\        vim-fuller \\' include/target.mk
 sed -i '/vim-fuller/a\\        sed \\' include/target.mk
 sed -i '/sed/a\\        jq \\' include/target.mk
 sed -i '/jq/a\\        lrzsz \\' include/target.mk
-sed -i '/lrzsz/a\\        openssl-util \\' include/target.mk
-sed -i '/openssl-util/a\\        openssh-sftp-server \\' include/target.mk
-sed -i '/openssh-sftp-server/a\\        openssh-sftp-client \\' include/target.mk
-sed -i '/openssh-sftp-client/a\\        libustream-openssl \\' include/target.mk
 sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
 sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
 sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
