@@ -347,6 +347,25 @@ sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
+# uhttpd 设置
+uci add_list uhttpd.main.listen_http='0.0.0.0:86'
+uci add_list uhttpd.main.listen_http='[::]:86'
+uci add_list uhttpd.main.listen_https='0.0.0.0:443'
+uci add_list uhttpd.main.listen_https='[::]:443'
+uci add_list uhttpd.main.listen_https='[::]:83'
+uci set uhttpd.defaults.country='CN'
+uci set uhttpd.defaults.location='HeFei'
+uci set uhttpd.main.rfc1918_filter=0
+uci set uhttpd.main.redirect_https=0
+uci set uhttpd.main.max_connections='200'
+uci set uhttpd.main.max_requests='100'
+uci set uhttpd.defaults.commonname='danxiaonuo'
+uci commit uhttpd
+/etc/init.d/uhttpd restart > /dev/null 2>&1
+
+echo $(uci get uhttpd.main.index_page) | grep -q "cgi-bin/luci" ||
+	uci -q add_list uhttpd.main.index_page='cgi-bin/luci' && commit uhttpd
+
 sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispatcher.lua
 
 echo 'hsts=0' > /root/.wgetrc
