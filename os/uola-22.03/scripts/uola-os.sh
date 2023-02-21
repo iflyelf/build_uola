@@ -87,9 +87,6 @@ sed -i '/git/a\\        zsh \\' include/target.mk
 sed -i '/zsh/a\\        curl \\' include/target.mk
 sed -i '/curl/a\\        wget \\' include/target.mk
 sed -i '/wget/a\\        vim-fuller \\' include/target.mk
-sed -i '/vim-fuller/a\\        sed \\' include/target.mk
-sed -i '/sed/a\\        jq \\' include/target.mk
-sed -i '/jq/a\\        lrzsz \\' include/target.mk
 sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
 sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
 sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
