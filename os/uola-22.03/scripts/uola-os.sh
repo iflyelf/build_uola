@@ -88,8 +88,7 @@ sed -i '/git/a\\        zsh \\' include/target.mk
 sed -i '/zsh/a\\        curl \\' include/target.mk
 sed -i '/curl/a\\        wget \\' include/target.mk
 sed -i '/wget/a\\        vim-fuller \\' include/target.mk
-sed -i '/vim-fuller/a\\        ipv6helper \\' include/target.mk
-sed -i '/ipv6helper/a\\        sed \\' include/target.mk
+sed -i '/vim-fuller/a\\        sed \\' include/target.mk
 sed -i '/sed/a\\        jq \\' include/target.mk
 sed -i '/jq/a\\        lrzsz \\' include/target.mk
 sed -i '/lrzsz/a\\        openssl-util \\' include/target.mk
