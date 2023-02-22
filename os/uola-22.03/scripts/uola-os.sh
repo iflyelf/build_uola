@@ -29,15 +29,12 @@ sed -i '/kmod-tun/a\\        kmod-sdhci \\' include/target.mk
 sed -i '/kmod-sdhci/a\\        kmod-mmc \\' include/target.mk
 sed -i '/kmod-mmc/a\\        kmod-mmc-spi \\' include/target.mk
 sed -i '/kmod-mmc-spi/a\\        kmod-scsi-core \\' include/target.mk
-sed -i '/kmod-scsi-core/a\\        kmod-fs-btrfs \\' include/target.mk
-sed -i '/kmod-fs-btrfs/a\\        kmod-fs-exfat \\' include/target.mk
+sed -i '/kmod-scsi-core/a\\        kmod-fs-exfat \\' include/target.mk
 sed -i '/kmod-fs-exfat/a\\        kmod-fs-ext4 \\' include/target.mk
 sed -i '/kmod-fs-ext4/a\\        kmod-fs-vfat \\' include/target.mk
 sed -i '/kmod-fs-vfat/a\\        kmod-fs-xfs \\' include/target.mk
 sed -i '/kmod-fs-xfs/a\\        kmod-fuse \\' include/target.mk
-sed -i '/kmod-fuse/a\\        btrfs-progs \\' include/target.mk
-sed -i '/btrfs-progs/a\\        e2fsprogs \\' include/target.mk
-sed -i '/e2fsprogs/a\\        resize2fs \\' include/target.mk
+sed -i '/kmod-fuse/a\\        resize2fs \\' include/target.mk
 sed -i '/resize2fs/a\\        swap-utils \\' include/target.mk
 sed -i '/swap-utils/a\\        sysfsutils \\' include/target.mk
 sed -i '/sysfsutils/a\\        xfs-growfs \\' include/target.mk
