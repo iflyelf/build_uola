@@ -23,6 +23,8 @@ svn co https://github.com/linkease/nas-packages/trunk/network/services/unishare
 svn co https://github.com/linkease/nas-packages/trunk/network/services/webdav2
 
 # 自动装备
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/automount
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autosamba
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/ipv6-helper
 
