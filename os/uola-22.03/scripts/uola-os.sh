@@ -23,8 +23,7 @@ sed -i '/luci-theme-argon/a\\        luci-app-argon-config \\' include/target.mk
 sed -i '/luci-app-argon-config/a\\        luci-i18n-base-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-base-zh-cn/a\\        luci-i18n-opkg-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-opkg-zh-cn/a\\        autocore \\' include/target.mk
-sed -i '/autocore/a\\        automount \\' include/target.mk
-sed -i '/automount/a\\        autosamba \\' include/target.mk
+sed -i '/autocore/a\\        autosamba \\' include/target.mk
 sed -i '/autosamba/a\\        kmod-tun \\' include/target.mk
 sed -i '/kmod-tun/a\\        kmod-sdhci \\' include/target.mk
 sed -i '/kmod-sdhci/a\\        kmod-mmc \\' include/target.mk
