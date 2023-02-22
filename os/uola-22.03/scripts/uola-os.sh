@@ -70,8 +70,8 @@ sed -i '/luci-app-firewall/a\\        luci-i18n-firewall-zh-cn \\' include/targe
 sed -i '/luci-i18n-firewall-zh-cn/a\\        ttyd \\' include/target.mk
 sed -i '/ttyd/a\\        luci-app-ttyd \\' include/target.mk
 sed -i '/luci-app-ttyd/a\\        luci-i18n-ttyd-zh-cn \\' include/target.mk
-sed -i '/luci-i18n-ttyd-zh-cn/a\\        luci-app-diskman \\' include/target.mk
-sed -i '/luci-app-diskman/a\\        luci-app-samba4 \\' include/target.mk
+sed -i '/luci-i18n-ttyd-zh-cn/a\\        parted \\' include/target.mk
+sed -i '/parted/a\\        luci-app-samba4 \\' include/target.mk
 sed -i '/luci-app-samba4/a\\        luci-i18n-samba4-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-samba4-zh-cn/a\\        luci-app-wol \\' include/target.mk
 sed -i '/luci-app-wol/a\\        luci-i18n-wol-zh-cn \\' include/target.mk
