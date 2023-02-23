@@ -38,9 +38,9 @@ sed -i '/swap-utils/a\\        sysfsutils \\' include/target.mk
 sed -i '/sysfsutils/a\\        xfs-growfs \\' include/target.mk
 sed -i '/xfs-growfs/a\\        xfs-mkfs \\' include/target.mk
 sed -i '/xfs-mkfs/a\\        kmod-usb-core \\' include/target.mk
-sed -i '/kmod-usb-core/a\\        kmod-usb-storage \\' include/target.mk
-sed -i '/kmod-usb-storage/a\\        kmod-usb-storage-extras \\' include/target.mk
+sed -i '/kmod-usb-core/a\\        kmod-usb-storage-extras \\' include/target.mk
 sed -i '/kmod-usb-storage-extras/a\\        kmod-usb-storage-uas \\' include/target.mk
+sed -i '/kmod-usb-storage-extras/i\\        kmod-usb-storage \\' include/target.mk
 sed -i '/kmod-usb-storage-uas/a\\        kmod-usb2 \\' include/target.mk
 sed -i '/kmod-usb2/a\\        kmod-usb3 \\' include/target.mk
 sed -i '/kmod-usb3/a\\        kmod-usbip \\' include/target.mk
@@ -48,8 +48,8 @@ sed -i '/kmod-usbip/a\\        kmod-usbip-client \\' include/target.mk
 sed -i '/kmod-usbip-client/a\\        kmod-usbip-server \\' include/target.mk
 sed -i '/kmod-usbip-server/a\\        libimobiledevice-utils \\' include/target.mk
 sed -i '/libimobiledevice-utils/a\\        libusbmuxd-utils \\' include/target.mk
-sed -i '/libusbmuxd-utils/a\\        usbmuxd \\' include/target.mk
-sed -i '/usbmuxd/a\\        luci-proto-3g \\' include/target.mk
+sed -i '/libusbmuxd-utils/a\\        luci-proto-3g \\' include/target.mk
+sed -i '/libusbmuxd-utils/i\\        usbmuxd \\' include/target.mk
 sed -i '/luci-proto-3g/a\\        luci-proto-bonding \\' include/target.mk
 sed -i '/luci-proto-bonding/a\\        luci-proto-ipv6 \\' include/target.mk
 sed -i '/luci-proto-ipv6/a\\        luci-proto-ncm \\' include/target.mk
@@ -87,6 +87,7 @@ sed -i '/openssh-sftp-client/a\\        libustream-openssl \\' include/target.mk
 sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
 sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
 sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
+
 
 # 增加zsh
 mkdir -p package/base-files/files/root
