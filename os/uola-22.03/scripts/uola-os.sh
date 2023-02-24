@@ -64,9 +64,7 @@ sed -i '/luci-app-firewall/a\\        luci-i18n-firewall-zh-cn \\' include/targe
 sed -i '/luci-i18n-firewall-zh-cn/a\\        luci-app-diskman \\' include/target.mk
 sed -i '/luci-app-diskman/a\\        luci-app-wol \\' include/target.mk
 sed -i '/luci-app-wol/a\\        luci-i18n-wol-zh-cn \\' include/target.mk
-sed -i '/luci-i18n-wol-zh-cn/a\\        luci-app-upnp \\' include/target.mk
-sed -i '/luci-app-upnp/a\\        luci-i18n-upnp-zh-cn \\' include/target.mk
-sed -i '/luci-i18n-upnp-zh-cn/a\\        luci-app-clash \\' include/target.mk
+sed -i '/luci-i18n-wol-zh-cn/a\\        luci-app-clash \\' include/target.mk
 sed -i '/luci-app-clash/a\\        bash \\' include/target.mk
 sed -i '/bash/a\\        git \\' include/target.mk
 sed -i '/git/a\\        zsh \\' include/target.mk
