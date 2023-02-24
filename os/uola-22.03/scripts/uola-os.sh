@@ -59,14 +59,10 @@ sed -i '/luci-proto-ppp/a\\        luci-proto-relay \\' include/target.mk
 sed -i '/luci-proto-relay/a\\        luci-proto-vxlan \\' include/target.mk
 sed -i '/luci-proto-vxlan/a\\        kmod-tcp-bbr \\' include/target.mk
 sed -i '/kmod-tcp-bbr/a\\        luci-proto-wireguard \\' include/target.mk
-sed -i '/luci-proto-wireguard/a\\        luci-app-ramfree \\' include/target.mk
-sed -i '/luci-app-ramfree/a\\        luci-app-firewall \\' include/target.mk
+sed -i '/luci-proto-wireguard/a\\        luci-app-firewall \\' include/target.mk
 sed -i '/luci-app-firewall/a\\        luci-i18n-firewall-zh-cn \\' include/target.mk
-sed -i '/luci-i18n-firewall-zh-cn/a\\        ttyd \\' include/target.mk
-sed -i '/ttyd/a\\        luci-app-ttyd \\' include/target.mk
-sed -i '/luci-app-ttyd/a\\        luci-i18n-ttyd-zh-cn \\' include/target.mk
-sed -i '/luci-i18n-ttyd-zh-cn/a\\        parted \\' include/target.mk
-sed -i '/parted/a\\        luci-app-wol \\' include/target.mk
+sed -i '/luci-i18n-firewall-zh-cn/a\\        luci-app-diskman \\' include/target.mk
+sed -i '/luci-app-diskman/a\\        luci-app-wol \\' include/target.mk
 sed -i '/luci-app-wol/a\\        luci-i18n-wol-zh-cn \\' include/target.mk
 sed -i '/luci-i18n-wol-zh-cn/a\\        luci-app-upnp \\' include/target.mk
 sed -i '/luci-app-upnp/a\\        luci-i18n-upnp-zh-cn \\' include/target.mk
@@ -87,7 +83,6 @@ sed -i '/openssh-sftp-client/a\\        libustream-openssl \\' include/target.mk
 sed -i '/dnsmasq-full/a\\        smartdns \\' include/target.mk
 sed -i '/smartdns/a\        luci-app-smartdns \\' include/target.mk
 sed -i '/luci-app-smartdns/a\\        luci-i18n-smartdns-zh-cn \\' include/target.mk
-
 
 # 增加zsh
 mkdir -p package/base-files/files/root
