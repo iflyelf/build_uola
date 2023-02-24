@@ -348,11 +348,10 @@ sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
 # uhttpd 设置
-uci add_list uhttpd.main.listen_http='0.0.0.0:86'
-uci add_list uhttpd.main.listen_http='[::]:86'
+uci add_list uhttpd.main.listen_http='0.0.0.0:80'
+uci add_list uhttpd.main.listen_http='[::]:80'
 uci add_list uhttpd.main.listen_https='0.0.0.0:443'
 uci add_list uhttpd.main.listen_https='[::]:443'
-uci add_list uhttpd.main.listen_https='[::]:83'
 uci set uhttpd.defaults.country='CN'
 uci set uhttpd.defaults.location='HeFei'
 uci set uhttpd.main.rfc1918_filter=0
