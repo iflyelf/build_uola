@@ -57,3 +57,5 @@ cat ${GITHUB_WORKSPACE}/os/common/scripts/aly_dns_ipv4.sh > package/base-files/f
 cat ${GITHUB_WORKSPACE}/os/common/scripts/aly_dns_ipv6.sh > package/base-files/files/sbin/aly_dns_ipv6.sh
 cat ${GITHUB_WORKSPACE}/os/common/scripts/dnspod_dns_ipv4.sh > package/base-files/files/sbin/dnspod_dns_ipv4.sh
 cat ${GITHUB_WORKSPACE}/os/common/scripts/dnspod_dns_ipv6.sh > package/base-files/files/sbin/dnspod_dns_ipv6.sh
+# 增加安装docker脚本
+cat ${GITHUB_WORKSPACE}/os/common/scripts/docker_install.sh > package/base-files/files/sbin/docker_install.sh
