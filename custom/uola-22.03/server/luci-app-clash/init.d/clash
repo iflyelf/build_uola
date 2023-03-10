@@ -169,7 +169,8 @@ yml_dns_change() {
 			echo "设置dns转发器" >$REAL_LOG
 		fi
 		uci delete dhcp.@dnsmasq[0].server 2>/dev/null
-		uci add_list dhcp.@dnsmasq[0].server=127.0.0.1#$dns_port >/dev/null 2>&1
+		# uci add_list dhcp.@dnsmasq[0].server=127.0.0.1#$dns_port >/dev/null 2>&1
+		/sbin/smartdns.sh
 		uci delete dhcp.@dnsmasq[0].resolvfile
 		uci set dhcp.@dnsmasq[0].noresolv=1
 		uci set dhcp.@dnsmasq[0].allservers=1
@@ -348,19 +349,19 @@ rules() {
 		iptables -t mangle -A clash -p udp -j TPROXY --on-port "${redir_port}" --tproxy-mark "$PROXY_FWMARK"
 		iptables -t mangle -A PREROUTING -p udp -j clash
 
-		if [ "${fake_ip}" == "fake-ip" ]; then
-			iptables -t nat -N clash_output
-			iptables -t nat -F clash_output
-			iptables -t nat -A clash_output -m set --match-set localnetwork dst -j RETURN
+		#if [ "${fake_ip}" == "fake-ip" ]; then
+		#	iptables -t nat -N clash_output
+		#	iptables -t nat -F clash_output
+		#	iptables -t nat -A clash_output -m set --match-set localnetwork dst -j RETURN
 
-			fake_ip_range=$(egrep '^ {0,}fake-ip-range' /etc/clash/config.yaml | grep fake-ip-range: | awk -F ': ' '{print $2}')
-			if [ ! -z "${fake_ip_range}" ]; then
-				iptables -t nat -A clash_output -p tcp -d $fake_ip_range -j REDIRECT --to-ports "${redir_port}"
-			else
-				iptables -t nat -A clash_output -p tcp -d 198.18.0.0/16 -j REDIRECT --to-ports "${redir_port}"
-			fi
-			iptables -t nat -A OUTPUT -p tcp -j clash_output
-		fi
+		#	fake_ip_range=$(egrep '^ {0,}fake-ip-range' /etc/clash/config.yaml | grep fake-ip-range: | awk -F ': ' '{print $2}')
+		#	if [ ! -z "${fake_ip_range}" ]; then
+		#		iptables -t nat -A clash_output -p tcp -d $fake_ip_range -j REDIRECT --to-ports "${redir_port}"
+		#	else
+		#		iptables -t nat -A clash_output -p tcp -d 198.18.0.0/16 -j REDIRECT --to-ports "${redir_port}"
+		#	fi
+		#	iptables -t nat -A OUTPUT -p tcp -j clash_output
+		#fi
 
 		if [ "${ipv6}" == "true" ]; then
 			# 给 TUN 设备增加路由
@@ -425,38 +426,38 @@ rules() {
 		ip -6 rule add fwmark "$PROXY_FWMARK" table "$PROXY_ROUTE_TABLE"
                 
                 # 创建clash_dns链
-                iptables -t nat -N clash_dns
+                # iptables -t nat -N clash_dns
                 # 清除clash_dns链规则
-                iptables -t nat -F clash_dns
+                # iptables -t nat -F clash_dns
                 # 绕过指定用户
-                iptables -t nat -A clash_dns -m owner --uid-owner "$PROXY_BYPASS_USER" -j RETURN
+                # iptables -t nat -A clash_dns -m owner --uid-owner "$PROXY_BYPASS_USER" -j RETURN
                 # 绕过系统组
-                iptables -t nat -A clash_dns -m owner --uid-owner systemd-timesync -j RETURN
+                # iptables -t nat -A clash_dns -m owner --uid-owner systemd-timesync -j RETURN
                 # 绕过cgroup
-                iptables -t nat -A clash_dns -m cgroup --cgroup "$PROXY_BYPASS_CGROUP" -j RETURN
+                # iptables -t nat -A clash_dns -m cgroup --cgroup "$PROXY_BYPASS_CGROUP" -j RETURN
 		# 目的转发
-                iptables -t nat -A clash_dns -p udp -j REDIRECT --to-ports "$dns_port"
+                # iptables -t nat -A clash_dns -p udp -j REDIRECT --to-ports "$dns_port"
                 # IPv4 出口使用 clash_dns 链
-                iptables -t nat -I OUTPUT -p udp --dport 53 -j clash_dns
+                # iptables -t nat -I OUTPUT -p udp --dport 53 -j clash_dns
 		# 在 PREROUTING 给所有非本地流量打上标记
-		iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "$dns_port"
+		# iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "$dns_port"
 
 	        # 创建clash6_dns链
-                ip6tables -t nat -N clash6_dns
+                # ip6tables -t nat -N clash6_dns
                 # 清除clash6_dns链规则
-                ip6tables -t nat -F clash6_dns
+                # ip6tables -t nat -F clash6_dns
                 # 绕过指定用户
-                ip6tables -t nat -A clash6_dns -m owner --uid-owner "$PROXY_BYPASS_USER" -j RETURN
+                # ip6tables -t nat -A clash6_dns -m owner --uid-owner "$PROXY_BYPASS_USER" -j RETURN
                 # 绕过系统组
-                ip6tables -t nat -A clash6_dns -m owner --uid-owner systemd-timesync -j RETURN
+                # ip6tables -t nat -A clash6_dns -m owner --uid-owner systemd-timesync -j RETURN
                 # 绕过cgroup
-                ip6tables -t nat -A clash6_dns -m cgroup --cgroup "$PROXY_BYPASS_CGROUP" -j RETURN
+                # ip6tables -t nat -A clash6_dns -m cgroup --cgroup "$PROXY_BYPASS_CGROUP" -j RETURN
                 # 目的转发
-                ip6tables -t nat -A clash6_dns -p udp -j REDIRECT --to-ports "$dns_port"
+                # ip6tables -t nat -A clash6_dns -p udp -j REDIRECT --to-ports "$dns_port"
                 # IPv4 出口使用 clash6_dns 链
-                ip6tables -t nat -I OUTPUT -p udp --dport 53 -j clash6_dns
+                # ip6tables -t nat -I OUTPUT -p udp --dport 53 -j clash6_dns
                 # 在 PREROUTING 给所有非本地流量打上标记
-                ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "$dns_port"	
+                # ip6tables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports "$dns_port"	
                 
 		# 创建clash链
                 iptables -t mangle -N clash
@@ -530,18 +531,18 @@ rules() {
                 # 服务redir端口接管请求转发
 		ip6tables -t nat -A PREROUTING -p tcp -m multiport --dport 80,443 -m set ! --match-set localnetwork6 dst -m set ! --match-set china6 dst -j REDIRECT --to-ports  ${redir_port} >/dev/null 2>&1
                
-		if [ "${fake_ip}" == "fake-ip" ]; then
-			iptables -t mangle -A clash -d 198.18.0.0/16 -j MARK --set-mark "$PROXY_FWMARK"
-		fi
+		#if [ "${fake_ip}" == "fake-ip" ]; then
+		#	iptables -t mangle -A clash -d 198.18.0.0/16 -j MARK --set-mark "$PROXY_FWMARK"
+		#fi
 
-		if [ "${fake_ip}" == "fake-ip" ]; then
-			fake_ip_range=$(egrep '^ {0,}fake-ip-range' /etc/clash/config.yaml | grep fake-ip-range: | awk -F ': ' '{print $2}')
-			if [ ! -z "${fake_ip_range}" ]; then
-				iptables -t nat -A OUTPUT -p tcp -d $fake_ip_range -j REDIRECT --to-ports "${redir_port}"
-			else
-				iptables -t nat -A OUTPUT -p tcp -d 198.18.0.1/16 -j REDIRECT --to-ports "${redir_port}"
-			fi
-		fi
+		#if [ "${fake_ip}" == "fake-ip" ]; then
+		#	fake_ip_range=$(egrep '^ {0,}fake-ip-range' /etc/clash/config.yaml | grep fake-ip-range: | awk -F ': ' '{print $2}')
+		#	if [ ! -z "${fake_ip_range}" ]; then
+		#		iptables -t nat -A OUTPUT -p tcp -d $fake_ip_range -j REDIRECT --to-ports "${redir_port}"
+		#	else
+	        #		iptables -t nat -A OUTPUT -p tcp -d 198.18.0.1/16 -j REDIRECT --to-ports "${redir_port}"
+		#	fi
+		#fi
 
 	fi
 
@@ -1024,6 +1025,16 @@ remove_mark() {
 	done
 
 	iptables -t nat -I PREROUTING -p tcp --dport 53 -j ACCEPT
+        
+	iptables -F >/dev/null 2>&1
+        iptables -X >/dev/null 2>&1
+        iptables -t nat -F >/dev/null 2>&1
+        iptables -t nat -X >/dev/null 2>&1
+        iptables -t mangle -F >/dev/null 2>&1
+        iptables -t mangle -X >/dev/null 2>&1
+        iptables -P INPUT ACCEPT >/dev/null 2>&1
+        iptables -P FORWARD ACCEPT >/dev/null 2>&1
+        iptables -P OUTPUT ACCEPT >/dev/null 2>&1
 
 	revert_dns >/dev/null 2>&1
 
