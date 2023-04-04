@@ -328,6 +328,7 @@ cat >> "/tmp/fallback.yaml" <<-EOF
     geoip-code: CN
     ipcidr:
      - 240.0.0.0/4
+     - 0.0.0.0/32
 EOF
 
 sed -i -e "\$a " /tmp/fallback.yaml 2>/dev/null
