@@ -119,6 +119,7 @@ cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clas
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/yum_change.sh > luci-app-clash/root/usr/share/clash/yum_change.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/chinaipset.sh > luci-app-clash/root/usr/share/clash/chinaipset.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/restore.sh > luci-app-clash/root/usr/share/clash/restore.sh
+sed -i '1i +.*' luci-app-clash/root/usr/share/clash/server.list
 
 find ${GITHUB_WORKSPACE}/uola-custom/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
