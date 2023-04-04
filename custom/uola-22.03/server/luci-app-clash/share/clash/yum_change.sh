@@ -103,9 +103,25 @@ if [ "${tun_mode}" -eq 1 ];then
 if [ "${core}" -eq 4 ] || [ "${core}" -eq 3 ];then
 
 cat >> "/tmp/tun.yaml" <<-EOF
+# 追踪
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 自动redir 
+auto-redir:
+  enable: true
+  auto-route: true
+
+# 自带重定向 
 tun:
-  enable: true 
-  stack: ${stack}  
+  enable: true
+  stack: ${stack}
+  dns-hijack:
+    - any:53
+  auto-route: false
+  auto-redir: false
+  auto-detect-interface: true
 EOF
 
 
