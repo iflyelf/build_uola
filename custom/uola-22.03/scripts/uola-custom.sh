@@ -100,12 +100,12 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git
 # 增加 clash
 rm -rf luci-app-clash
 git clone --depth=1 https://github.com/frainzy1477/luci-app-clash.git
-# rm -rf luci-app-clash/root/usr/share/clash/yacd
-# wget -c  https://github.com/haishanh/yacd/releases/latest/download/yacd.tar.xz -O yacd.tar.xz
-# tar xf yacd.tar.xz
-# cp -rfp public luci-app-clash/root/usr/share/clash/yacd
-# mv -f luci-app-clash/root/usr/share/clash/yacd/assets/* luci-app-clash/root/usr/share/clash/yacd/
-# rm -rf public yacd.tar.xz luci-app-clash/root/usr/share/clash/yacd/assets
+rm -rf luci-app-clash/root/usr/share/clash/yacd
+wget -c  https://github.com/haishanh/yacd/releases/latest/download/yacd.tar.xz -O yacd.tar.xz
+tar xf yacd.tar.xz
+cp -rfp public luci-app-clash/root/usr/share/clash/yacd
+mv -f luci-app-clash/root/usr/share/clash/yacd/assets/* luci-app-clash/root/usr/share/clash/yacd/
+rm -rf public yacd.tar.xz luci-app-clash/root/usr/share/clash/yacd/assets
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/luasrc/view/clash/status.htm > luci-app-clash/luasrc/view/clash/status.htm
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/init.d/clash > luci-app-clash/root/etc/init.d/clash
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/config/clash > luci-app-clash/root/etc/config/clash
@@ -119,7 +119,7 @@ cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clas
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/yum_change.sh > luci-app-clash/root/usr/share/clash/yum_change.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/chinaipset.sh > luci-app-clash/root/usr/share/clash/chinaipset.sh
 cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/restore.sh > luci-app-clash/root/usr/share/clash/restore.sh
-sed -i '1i +.*' luci-app-clash/root/usr/share/clash/server.list
+cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/server.list > luci-app-clash/root/usr/share/clash/server.list
 
 find ${GITHUB_WORKSPACE}/uola-custom/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
