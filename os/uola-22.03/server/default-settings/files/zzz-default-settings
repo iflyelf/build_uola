@@ -399,10 +399,10 @@ chmod 775 /sbin/smartdns.sh
 sed -i '/exit 0/i\# smartdns自动检测\nbash /sbin/smartdns.sh' /etc/rc.local
 
 # 自动检测ipv6路由
-sed -i '/fw3 -q reload/i\/sbin/ipv6_check_route.sh' /etc/hotplug.d/iface/20-firewall
-# sed -i '/fw3 -q reload/a\/etc/init.d/smartdns restart' /etc/hotplug.d/iface/20-firewall
-# sed -i '/fw3 -q reload/a\/etc/init.d/dnsmasq restart' /etc/hotplug.d/iface/20-firewall
-# sed -i '/fw3 -q reload/a\/etc/init.d/firewall restart' /etc/hotplug.d/iface/20-firewall
+sed -i '/fw4 -q reload/i\/sbin/ipv6_check_route.sh' /etc/hotplug.d/iface/20-firewall
+# sed -i '/fw4 -q reload/a\/etc/init.d/smartdns restart' /etc/hotplug.d/iface/20-firewall
+# sed -i '/fw4 -q reload/a\/etc/init.d/dnsmasq restart' /etc/hotplug.d/iface/20-firewall
+# sed -i '/fw4 -q reload/a\/etc/init.d/firewall restart' /etc/hotplug.d/iface/20-firewall
 # echo "/etc/init.d/firewall restart" >> /etc/hotplug.d/iface/20-firewall
 # echo "/sbin/ipv6_check_route.sh" >> /etc/hotplug.d/iface/20-firewall
 # echo "/etc/init.d/firewall restart" >> /etc/hotplug.d/ntp/25-dnsmasqsec
