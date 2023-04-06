@@ -8,8 +8,8 @@ ulimit -SHq unlimited
 ulimit -SHn 655360
 
 
-START=100
-STOP=15
+START=30
+STOP=90
 
 CLASH="/etc/clash/clash"
 CLASHT="/etc/clash/clashtun/clash"
