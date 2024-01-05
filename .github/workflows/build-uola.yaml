@@ -43,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
@@ -120,7 +120,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
@@ -198,7 +198,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
@@ -268,7 +268,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
@@ -345,7 +345,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
@@ -422,7 +422,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [uola-22.03]
+        target: [uola-23.05]
     
     # 运行步骤
     steps:
