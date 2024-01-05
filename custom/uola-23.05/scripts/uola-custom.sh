@@ -23,10 +23,10 @@ svn co https://github.com/linkease/nas-packages/trunk/network/services/unishare
 svn co https://github.com/linkease/nas-packages/trunk/network/services/webdav2
 
 # 自动装备
-# svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore
-# svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/automount
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autosamba
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/ipv6-helper
+# svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-23.05/package/emortal/autocore
+# svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-23.05/package/emortal/automount
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-23.05/package/emortal/autosamba
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-23.05/package/emortal/ipv6-helper
 
 # luci-app-cpulimit
 svn co https://github.com/xiangfeidexiaohuo/openwrt-packages/trunk/op-cpulimit/cpulimit-ng 
