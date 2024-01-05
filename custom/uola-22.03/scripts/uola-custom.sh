@@ -97,29 +97,9 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git
 
-# 增加 clash
-rm -rf luci-app-clash
-git clone --depth=1 https://github.com/frainzy1477/luci-app-clash.git
-rm -rf luci-app-clash/root/usr/share/clash/yacd
-wget -c  https://github.com/haishanh/yacd/releases/latest/download/yacd.tar.xz -O yacd.tar.xz
-tar xf yacd.tar.xz
-cp -rfp public luci-app-clash/root/usr/share/clash/yacd
-mv -f luci-app-clash/root/usr/share/clash/yacd/assets/* luci-app-clash/root/usr/share/clash/yacd/
-rm -rf public yacd.tar.xz luci-app-clash/root/usr/share/clash/yacd/assets
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/luasrc/view/clash/status.htm > luci-app-clash/luasrc/view/clash/status.htm
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/init.d/clash > luci-app-clash/root/etc/init.d/clash
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/config/clash > luci-app-clash/root/etc/config/clash
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/check_clashtun_core_version.sh > luci-app-clash/root/usr/share/clash/check_clashtun_core_version.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/check_core_version.sh > luci-app-clash/root/usr/share/clash/check_core_version.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/check_dtun_core_version.sh > luci-app-clash/root/usr/share/clash/check_dtun_core_version.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/check_luci_version.sh > luci-app-clash/root/usr/share/clash/check_luci_version.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/clash-watchdog.sh > luci-app-clash/root/usr/share/clash/clash-watchdog.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/conection.sh > luci-app-clash/root/usr/share/clash/conection.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/core_download.sh > luci-app-clash/root/usr/share/clash/core_download.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/yum_change.sh > luci-app-clash/root/usr/share/clash/yum_change.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/chinaipset.sh > luci-app-clash/root/usr/share/clash/chinaipset.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/restore.sh > luci-app-clash/root/usr/share/clash/restore.sh
-cat ${GITHUB_WORKSPACE}/custom/${matrix_target}/server/luci-app-clash/share/clash/server.list > luci-app-clash/root/usr/share/clash/server.list
+# 增加 luci-app-openclash
+rm -rf luci-app-openclash
+git clone --depth 1 -b dev https://github.com/vernesong/OpenClash.git && mv -f OpenClash/luci-app-openclash ./ ; rm -Rf OpenClash
 
 find ${GITHUB_WORKSPACE}/uola-custom/ \( -name .git -o -name .github -o -name .svn \) -type d | xargs -exec rm -rf 
 
